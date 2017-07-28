@@ -1,0 +1,15 @@
+public class Solution {
+    public int LeastInterval(char[] tasks, int n) {
+        int[] arr=new int[26];
+        foreach(char t in tasks)
+        {
+            arr[t-'A']++;
+        }
+        Array.Sort(arr);
+        int i=25;
+        while (i>0 && arr[25]==arr[i])
+            i--;
+        
+        return Math.Max(tasks.Length,(arr[25]-1)*(n+1)+25-i);
+    }
+}
