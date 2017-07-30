@@ -1,0 +1,27 @@
+public class Solution {
+    public int ArrayNesting(int[] nums) {
+        int max=0;
+        if (nums!=null && nums.Length>0)
+        {
+            Dictionary<int,bool> dict=new Dictionary<int,bool>(); //If use List<int>, time out when submit but not when run single case :(
+            
+            for(int i=0;i<nums.Length;i++)
+            {
+                if (dict.ContainsKey(nums[i]))
+                {
+                    continue;
+                }
+                int start=i;
+                int curCount=0;
+                while (curCount==0 || i!=start)
+                {
+                    dict.Add(start,true);
+                    start=nums[start];
+                    curCount++;                   
+                }                
+                max=Math.Max(max,curCount);
+            }
+        }
+        return max;
+    }
+}

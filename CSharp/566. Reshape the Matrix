@@ -1,0 +1,30 @@
+public class Solution {
+    public int[,] MatrixReshape(int[,] nums, int r, int c) {
+        int h=nums.GetLength(0);
+        int w=nums.GetLength(1);
+        if (r*c!=h*w)
+        {
+            return nums;
+        }
+        int[,] newNums=new int[r,c];
+        int i=0;int j=0;
+        int k=0;int m=0;
+        while (i<h && j<w)
+        {
+            newNums[k,m]=nums[i,j];
+            j++;
+            m++;
+            if (j==w)
+            {
+                i++;
+                j=0;
+            }
+            if (m==c)
+            {
+                k++;
+                m=0;
+            }
+        }
+        return newNums;
+    }
+}

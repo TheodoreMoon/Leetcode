@@ -1,0 +1,11 @@
+public class Solution {
+    public int ArrayPairSum(int[] nums) {
+        Array.Sort(nums);
+        int sum=0;
+        for(int i=nums.Length-2;i>=0;i=i-2)
+        {
+            sum+=nums[i];
+        }
+        return sum;
+    }
+}
