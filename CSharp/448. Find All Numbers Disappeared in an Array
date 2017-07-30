@@ -1,0 +1,30 @@
+public class Solution {
+    public IList<int> FindDisappearedNumbers(int[] nums) {
+    
+        IList<int> list=new List<int>();
+        if (nums!=null && nums.Length>0)
+        {
+            int i=0;
+            while (i<nums.Length)
+            {
+                if (i!=nums[i]-1 && nums[nums[i]-1]!=nums[i])
+                {
+                    int temp=nums[nums[i]-1];
+                    nums[nums[i]-1]=nums[i];
+                    nums[i]=temp;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+            for(int j=0;j<nums.Length;j++)
+            {
+                if (j!=nums[j]-1)
+                    list.Add(j+1);
+            }
+        }
+        
+        return list;
+    }
+}

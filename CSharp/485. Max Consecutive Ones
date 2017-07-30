@@ -1,0 +1,22 @@
+public class Solution {
+    public int FindMaxConsecutiveOnes(int[] nums) {
+        int max=0;
+        int curMax=0;
+        foreach(int i in nums)
+        {
+            if (i==0 && curMax==0)
+                continue;
+            if (i==0)
+            {
+                max=Math.Max(max,curMax);
+                curMax=0;
+            }
+            else
+            {
+                curMax++;
+            }
+        }
+        max=Math.Max(max,curMax);
+        return max;
+    }
+}

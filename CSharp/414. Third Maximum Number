@@ -1,0 +1,54 @@
+public class Solution {
+    public int ThirdMax(int[] nums) {
+        if(nums==null || nums.Length==0)
+        {
+            return 0;
+        }
+        if (nums.Length==1)
+        {
+            return nums[0];
+        }
+        if (nums.Length==2)
+        {
+            return Math.Max(nums[0],nums[1]);
+        }
+        int max1=int.MinValue,max2=int.MinValue,max3=int.MinValue;
+        int count=0;bool hasMinValue=false;
+        for(int i=0;i<nums.Length;i++)
+        {
+            if (nums[i]>max3 && nums[i]!=max1 && nums[i]!=max2)
+            {
+                count++;
+                max3=nums[i];
+                if (max3>max2)
+                {
+                    switchNums(ref max2,ref max3);
+                }
+                if (max2>max1)
+                {
+                    switchNums(ref max1,ref max2);
+                }
+            }
+            else if (nums[i]==max3 && nums[i]==int.MinValue && hasMinValue==false)
+            {
+                hasMinValue=true;
+                count++;
+            }
+        }
+        if (count>=3)
+        {
+            return max3;
+        }
+        else
+        {
+            return max1;
+        }
+    }
+    
+    private void switchNums(ref int a, ref int b)
+    {
+        int temp=a;
+        a=b;
+        b=temp;
+    }
+}

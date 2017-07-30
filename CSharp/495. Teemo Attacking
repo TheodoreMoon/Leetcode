@@ -1,0 +1,30 @@
+public class Solution {
+    public int FindPoisonedDuration(int[] timeSeries, int duration) {
+        int result=0;
+        if (timeSeries!=null && timeSeries.Length>0)
+        {
+            int curMaxDuration=duration;
+            int curEnd=timeSeries[0]+duration;
+
+            for(int i=1;i<timeSeries.Length;i++)
+            {
+                int t=timeSeries[i];
+                if (t<=curEnd)
+                {
+
+                    int diff=t+duration-curEnd;
+                    curEnd=t+duration;
+                    curMaxDuration+=diff;
+                }
+                else
+                {
+                    result+=curMaxDuration;
+                    curMaxDuration=duration;
+                    curEnd=t+duration;
+                }
+            }
+            result+=curMaxDuration;
+        }
+        return result;
+    }
+}
