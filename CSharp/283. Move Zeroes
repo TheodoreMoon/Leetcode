@@ -1,0 +1,24 @@
+public class Solution {
+    public void MoveZeroes(int[] nums) {
+        int i=0;int j=0;
+        while (i<nums.Length && j<nums.Length)
+        {
+            while (i<nums.Length && nums[i]!=0)
+            {
+                i++;
+            }
+            if (i==nums.Length)
+                break;
+            if (j<=i)
+                j=i+1;
+            while (j<nums.Length && nums[j]==0)
+                j++;
+            if (j==nums.Length)
+                break;
+            nums[i]=nums[j];
+            nums[j]=0;
+            i++;
+            j++;
+        }
+    }
+}

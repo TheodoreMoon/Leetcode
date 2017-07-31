@@ -1,0 +1,44 @@
+public class RandomizedSet {
+
+    public List<int> list=new List<int>();
+    Random r;
+    int n=1;
+    /** Initialize your data structure here. */
+    public RandomizedSet() {
+        r = new Random(DateTime.Now.Millisecond);
+    }
+    
+    /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
+    public bool Insert(int val) {
+        if (list.Contains(val))
+        {
+            return false;
+        }
+        list.Add(val);
+        return true;
+    }
+    
+    /** Removes a value from the set. Returns true if the set contained the specified element. */
+    public bool Remove(int val) {
+        if (list.Contains(val))
+        {
+            list.Remove(val);
+            return true;
+        }
+        return false;
+    }
+    
+    /** Get a random element from the set. */
+    public int GetRandom() {
+        if (list.Count>0)
+        {
+            n++;
+            int rInt=0;
+                
+                rInt = (r.Next()+n) % list.Count;
+            
+            return list[rInt];
+        }
+        return -1;
+    }
+}

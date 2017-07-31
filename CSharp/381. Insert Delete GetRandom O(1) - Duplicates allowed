@@ -1,0 +1,46 @@
+public class RandomizedCollection {
+
+    public List<int> list=new List<int>();
+    Random r;
+    int n=1;
+    /** Initialize your data structure here. */
+    public RandomizedCollection() {
+        r = new Random(DateTime.Now.Millisecond);
+    }
+    
+    /** Inserts a value to the collection. Returns true if the collection did not already contain the specified element. */
+    public bool Insert(int val) {
+        
+        if (list.Contains(val))
+        {
+            list.Add(val);
+            return false;
+        }
+        list.Add(val);
+        return true;
+    }
+    
+    /** Removes a value from the collection. Returns true if the collection contained the specified element. */
+    public bool Remove(int val) {
+        if (list.Contains(val))
+        {
+            list.Remove(val);
+            return true;
+        }
+        return false;
+    }
+    
+    /** Get a random element from the collection. */
+    public int GetRandom() {
+        if (list.Count>0)
+        {
+            n++;
+            int rInt=0;
+                
+                rInt = (r.Next()+n) % list.Count;
+            
+            return list[rInt];
+        }
+        return -1;
+    }
+}

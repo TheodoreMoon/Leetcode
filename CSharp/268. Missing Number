@@ -1,0 +1,21 @@
+public class Solution {
+    public int MissingNumber(int[] nums) {
+        if (nums!=null && nums.Length>0)
+        {
+            int[] nums1=new int[nums.Length+1];
+            for(int i=0;i<nums.Length;i++)
+            {
+                nums1[nums[i]]=1;
+            }
+            for(int i=0;i<nums1.Length;i++)
+            {
+                if (nums1[i]==0)
+                {
+                    return i;
+                }
+            }
+        }
+        return nums.Length;
+        
+    }
+}
