@@ -1,0 +1,39 @@
+public class Solution {
+    public int[] ProductExceptSelf(int[] nums) {
+        if (nums!=null && nums.Length>0)
+        {
+            int products=1;
+            int zeroNum=0;
+            for(int i=0;i<nums.Length;i++)
+            {
+                if (nums[i]==0)
+                {
+                    zeroNum++;
+                }
+                else
+                {
+                    products *=nums[i];
+                }
+            }
+            
+            for(int i=0;i<nums.Length;i++)
+            {
+                if (nums[i]!=0)
+                {
+                    if (zeroNum>0)
+                        nums[i]=0;
+                    else
+                        nums[i]=products/nums[i];
+                }
+                else
+                {
+                    if (zeroNum==1)
+                    {
+                        nums[i]=products;
+                    }
+                }
+            }
+        }
+        return nums;
+    }
+}
