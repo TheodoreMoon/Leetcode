@@ -1,0 +1,32 @@
+public class Solution {
+    public IList<string> SummaryRanges(int[] nums) {
+        IList<string> list=new List<string>();
+        if (nums!=null && nums.Length>0)
+        {
+            list.Add(nums[0].ToString());
+            int k=nums[0];
+            for(int i=1;i<nums.Length;i++)
+            {
+                if (nums[i]==nums[i-1]+1)
+                {
+                    k++;
+                }
+                else
+                {
+                    if (list[list.Count-1]!=k.ToString())
+                    {
+                        list[list.Count-1]=list[list.Count-1]+"->"+k.ToString();
+                    }
+                    k=nums[i];
+                    list.Add(k.ToString());
+                }
+            }
+            if (list[list.Count-1]!=k.ToString())
+            {       
+                list[list.Count-1]+="->"+k.ToString();
+            }
+        }
+        
+        return list;
+    }
+}

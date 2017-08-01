@@ -1,0 +1,14 @@
+public class Solution {
+    public bool ContainsDuplicate(int[] nums) {
+        HashSet<int> ht=new HashSet<int>();
+        foreach(int n in nums)
+        {
+            if (ht.Contains(n))
+            {
+                return true;
+            }
+            ht.Add(n);
+        }
+        return false;
+    }
+}

@@ -1,0 +1,26 @@
+public class Solution {
+    public int MinSubArrayLen(int s, int[] nums) {
+        if (nums!=null && nums.Length>0)
+        {
+            int left=0,right=0,res=nums.Length+1,sum=0;
+            while (right<nums.Length)
+            {
+                while (sum<s && right<nums.Length)
+                {
+                    sum+=nums[right++];
+                }
+                while (sum>=s && left<=right)
+                {
+                    res=Math.Min(res,right-left);
+                    sum=sum-nums[left++];
+                }
+            }
+            
+            return res>nums.Length?0:res;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+}

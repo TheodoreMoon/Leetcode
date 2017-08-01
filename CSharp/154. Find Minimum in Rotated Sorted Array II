@@ -1,0 +1,42 @@
+public class Solution {
+    public int FindMin(int[] nums) {
+        return findMin(nums,0,nums.Length-1);
+    }
+    
+    int findMin(int[] nums,int start,int end)
+    {
+        while (start<end && nums[start+1]==nums[start])
+        {
+            start++;
+        }
+        while (start<end && nums[end-1]==nums[end])
+        {
+            end--;
+        }
+        if (start<end && nums[start]==nums[end])
+        {
+            end--;
+        }
+        if (start==end)
+        {
+            return nums[start];
+        }
+        if (start==end-1)
+        {
+            return Math.Min(nums[start],nums[end]);
+        }
+        int mid=(start+end)>>1;
+        if (nums[start]<=nums[mid] && nums[mid]<=nums[end])
+        {
+            return nums[start];
+        }
+        else if (nums[start]>nums[mid] && nums[mid]<nums[end])
+        {
+            return findMin(nums,start+1,mid);
+        }
+        else 
+        {
+            return findMin(nums,mid+1,end);
+        }
+    }
+}

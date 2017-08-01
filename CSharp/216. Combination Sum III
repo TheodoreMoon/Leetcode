@@ -1,0 +1,60 @@
+public class Solution {
+    IList<IList<int>> list=new List<IList<int>>();
+    
+    public IList<IList<int>> CombinationSum3(int k, int n) {
+        
+        if (k<=9 && k>0 && n>0)
+        {
+            int sum=(19-k)*k/2;
+            if (n<=sum)
+            {
+                int[] used=new int[10];
+                for(int i=1;i<11-k;i++)
+                {
+                    if (i>n)
+                    {
+                        break;
+                    }
+                    used[i]=1;
+                    List<int> l=new List<int>();
+                    l.Add(i);
+                    getSum(used,n-i,l,k-1,i);
+                    used[i]=0;
+                }
+            }
+        }
+        
+        return list;
+    }
+    
+    private void getSum(int[] used,int n, List<int> l, int k,int m)
+    {
+        if (k==1)
+        {
+            if (n<10  && n>m)
+            {
+                if (used[n]==0)
+                {
+                    l.Add(n);
+                    list.Add(l.Select(item=>item).ToList<int>());
+                    l.Remove(n);
+                }
+            }
+        }
+        else
+        {
+            for(int i=m+1;i<11-k;i++)
+            {
+                if (i>n)
+                    break;
+                if (used[i]==1)
+                    continue;
+                used[i]=1;
+                l.Add(i);
+                getSum(used,n-i,l,k-1,i);
+                used[i]=0;
+                l.Remove(i);
+            }
+        }
+    }
+}
