@@ -1,0 +1,20 @@
+public class Solution {
+    public int MajorityElement(int[] nums) {
+        int n=0,cn=0;
+        foreach(int i in nums)
+        {
+            if (i==n)
+            {
+                cn++;
+            }
+            else if (cn==0)
+            {
+                n=i;
+                cn=1;
+            }
+            else
+                cn--;
+        }
+        return n;
+    }
+}
