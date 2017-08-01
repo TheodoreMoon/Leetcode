@@ -1,0 +1,26 @@
+public class Solution {
+    public int FindMin(int[] nums) {
+        int min=-1;
+        if (nums!=null && nums.Length>0)
+        {
+            min=find(nums,0,nums.Length-1);
+        }
+        return min;
+    }
+    
+    private int find(int[] nums, int start, int end)
+    {
+        if (start==end || start==end-1)
+        {
+            return Math.Min(nums[start],nums[end]);
+        }
+        int mid=start+(end-start)/2;
+        if (nums[mid]>nums[start] && nums[start]>nums[end])
+            return find(nums,mid,end);
+        else if (nums[mid]>nums[start] && nums[mid]<nums[end])
+            return find(nums,start,mid);
+        else 
+            return find(nums,start,mid);
+        
+    }
+}
