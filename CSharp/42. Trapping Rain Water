@@ -1,0 +1,26 @@
+public class Solution {
+    public int Trap(int[] height) {
+        if (height==null || height.Length<3)
+        {
+            return 0;
+        }
+        int[] maxL=new int[height.Length];
+        int[] maxR=new int[height.Length];
+        int max=height[0];
+        for(int i=0;i<height.Length;i++)
+        {
+            maxL[i]=max;
+            max=Math.Max(max,height[i]);
+        }
+        max=0;
+        maxR[height.Length-1]=height[height.Length-1];
+        for(int i=height.Length-2;i>=0;i--)
+        {
+            maxR[i]=Math.Max(maxR[i+1],height[i]);
+            int minHeight=Math.Min(maxL[i],maxR[i]);
+            if (minHeight>height[i])
+                max+=minHeight-height[i];
+        }
+        return max;
+    }
+}
